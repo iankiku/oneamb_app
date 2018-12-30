@@ -20,6 +20,10 @@ def All_Items (request):
 # Add a Todo Item
 
 # Delete a TodoItem
+def deleteItem(request, todo_id):
+        item_to_delete = TodoItem.objects.get(id=todo_id)
+        item_to_delete.delete()
+        return HttpResponseRedirect('/todo')
 
 # Update a todo Item
 
