@@ -113,3 +113,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 tweetsbank/twitter_config.py
+twitter_config.py
