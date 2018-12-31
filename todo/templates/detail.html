@@ -1,0 +1,15 @@
+<h3>Detail Todo</h3>
+
+
+<h1>Editing: {{ item}}</h1>
+
+
+
+<form action="{% url 'update' item %}" method="post">
+{% csrf_token %}
+
+    <input type="text" name="edit" id="update" value="{{ item}}" />
+    
+
+<input type="submit" value="Submit Edit" />
+</form>
