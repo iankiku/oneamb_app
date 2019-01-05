@@ -2,7 +2,7 @@
 from . import views
 from django.urls import path
 
-from .views import All_Items, UpdateView
+from .views import All_Items
 
 urlpatterns = [
     path('', views.All_Items, name='todo'),
@@ -12,5 +12,5 @@ urlpatterns = [
     path('<int:todo_id>/', views.detailView, name='detail'), 
 
     path('edit/<todo_id>', views.edit, name='edit'),     
-    path('update/<id>', UpdateView.as_view(), name='update')  
+    # path('update/<id>', UpdateView.as_view(), name='update')  
 ]

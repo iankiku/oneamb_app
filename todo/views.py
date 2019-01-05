@@ -1,7 +1,4 @@
 from django.views.generic import TemplateView, ListView, UpdateView
-
-# from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
- 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
@@ -48,6 +45,8 @@ def edit(request, todo_id):
                         #       output message
                         return redirect('/todo')
         else:
+                print('....errorr.....')
+                
                 item = TodoItem.objects.get(pk=todo_id)
                 return render(request, 'edit.html', {'item': item}) 
 
@@ -57,15 +56,7 @@ def detailView(request, todo_id):
         return render(request, 'detail.html', {'item': item})
 
 
-class UpdateView(UpdateView):
-        model = TodoItem
-        template_name = "update.html"
-        def getobj(self, id, queryset=None):
-                id = self.kwargs['id']
-                return self.model.objects.get(id=id)
-        def formValid(self, form):
-                form.save()
-                return HttpResponseRedirect(reverse('todo'))
+
 
 
 
