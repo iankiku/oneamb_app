@@ -5,11 +5,3 @@
 
 
 
-<form action="{% url 'update' item %}" method="post">
-{% csrf_token %}
-
-    <input type="text" name="edit" id="update" value="{{ item}}" />
-    
-
-<input type="submit" value="Submit Edit" />
-</form>

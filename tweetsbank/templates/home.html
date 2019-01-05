@@ -1,1 +1,7 @@
 <h1>TweetBank</h1>
+
+{% for i in myStream %}
+
+    <li>Text: {{i.text}} ---{{i.user.screen_name}}</li>
+
+{% endfor %}

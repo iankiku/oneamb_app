@@ -1,9 +1,12 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, UpdateView
+
+# from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
+ 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from .models import TodoItem
-from .forms import updateForm
+from .forms import InputForm
 
 
 """
@@ -35,34 +38,34 @@ def deleteItem(request, todo_id):
 
 
 # Update a todo Item
-def updateItem(request, todo_id):
+def edit(request, todo_id):
         if request.method == 'POST':
-                formVal = updateForm(request.POST)
-                
+                item = TodoItem.objects.get(pk=todo_id)
+                form = InputForm(request.POST or None, instance=item)
 
-                if formVal.is_valid():
-                        pass    # validate form
-                        # save form data
-                        
-                        return HttpResponseRedirect('/todo') #redirect todo list
-                else:
-                        pass #show errors if failed
-                        #return
-
-
-        # after updating item return to home
-        return HttpResponseRedirect('/todo')
-
-
-
-
-
+                if form.is_valid():
+                        form.save()
+                        #       output message
+                        return redirect('/todo')
+        else:
+                item = TodoItem.objects.get(pk=todo_id)
+                return render(request, 'edit.html', {'item': item}) 
 
 
 def detailView(request, todo_id):
         item = TodoItem.objects.get(pk=todo_id)
         return render(request, 'detail.html', {'item': item})
 
+
+class UpdateView(UpdateView):
+        model = TodoItem
+        template_name = "update.html"
+        def getobj(self, id, queryset=None):
+                id = self.kwargs['id']
+                return self.model.objects.get(id=id)
+        def formValid(self, form):
+                form.save()
+                return HttpResponseRedirect(reverse('todo'))
 
 
 

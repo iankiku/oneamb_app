@@ -13,7 +13,7 @@
     <body>
         <div class="container">
 <div class="row">
-{% comment %} add Form {% endcomment %}
+
       <div class="col s6">
       <ul class="collection with-header">
         <li class="collection-header"><h4>Todo List </h4></li>
@@ -21,12 +21,14 @@
       <li class="collection-item">
       <div>  
      <a href="{% url 'detail' todo.id %}"> {{ todo.content }} </a>
-      <a href="#!" class="secondary-content">
-      <i class="material-icons">edit</i> </a>
-
-         <a href="{% url 'delete' todo.id %}" class="secondary-content">
+           <a href="{% url 'delete' todo.id %}" class="secondary-content">
       <i class="material-icons">delete</i>
       </a>
+
+      <a href="{% url 'update' todo.id %}" class="secondary-content">
+      <i class="material-icons">edit</i> </a>
+
+   
       </div>
 
       </li>
