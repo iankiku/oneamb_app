@@ -19,23 +19,12 @@ class TweetStream(TemplateView, tweepy.StreamListener):
     # create object
     api = tweepy.API(auth)
 
+    def getStatus(self):
+        pass
+    
 
-    def status(self):
-        myStreamListener = MyStreamListener()
-        myStream = tweepy.Stream(api, listener=myStreamListener)
-        myStream.filter(track=['python'])
-
-
-
-
-
-if '__name__' == '__main__':
-    pass
-
-
-
-
-
+    def getTweetbyTag(self):
+        pass
 
 
 
