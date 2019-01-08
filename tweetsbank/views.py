@@ -26,7 +26,8 @@ class TweetStream(TemplateView, tweepy.StreamListener):
     def getTweetbyTag(self):
         pass
 
-
+    def tweetsArchiver(self):
+        pass
 
 
 
